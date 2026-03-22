@@ -2,11 +2,11 @@
 
 ![Retroframe preview](./assets/images/retroframe-social-preview.svg)
 
-Retroframe is a standalone retro portfolio template for researchers and engineers.
+Retroframe is a retro Web 2.0 style academic personal website template for researchers, professors, and technical builders.
 
-It is built for people who want a site that feels more distinctive than a typical modern landing page, while still staying easy to edit and deploy.
+It is designed for people who want a structured, publication-ready homepage that feels distinctive and content-focused, rather than a generic modern landing page.
 
-If you use this template, attribution in the footer is highly appreciated but not required.
+Free to use and modify. Attribution in the footer is highly appreciated but not required.
 
 ## Structure
 
