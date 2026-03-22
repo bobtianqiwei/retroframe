@@ -1,6 +1,6 @@
 # Retroframe
 
-![Retroframe preview](./assets/images/retroframe-social-preview.svg)
+![Retroframe preview](./assets/images/retroframe.png)
 
 Retroframe is a retro Web 2.0 style academic personal website template for researchers, professors, and technical builders.
 
