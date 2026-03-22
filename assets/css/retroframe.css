@@ -6,6 +6,9 @@ html {
 
 body {
   margin: 0;
+  min-height: 100vh;
+  padding: 12px 0 24px;
+  box-sizing: border-box;
   background: #d8e5f6;
   background-image:
     radial-gradient(circle at top left, rgba(255, 255, 255, 0.75), transparent 28%),
@@ -26,8 +29,12 @@ img {
 }
 
 .page {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
   width: 960px;
-  margin: 12px auto 24px;
+  margin: 0 auto;
+  min-height: 100%;
   border: 1px solid rgba(107, 140, 187, 0.95);
   background: linear-gradient(rgba(255, 255, 255, 0.78), rgba(231, 239, 250, 0.78));
   box-shadow:
@@ -291,6 +298,7 @@ body[data-page="home"] .best-viewed {
 }
 
 .content {
+  flex: 1 1 auto;
   width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
