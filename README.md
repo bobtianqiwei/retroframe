@@ -34,6 +34,8 @@ Most edits happen in:
 - `content/site.js`
 - `content/projects/*.js`
 
+This template also works well with coding tools such as Claude Code, Codex, and Cursor. You can ask them to replace the demo content with your own projects, publications, links, and profile information very quickly.
+
 Then rebuild:
 
 ```bash
