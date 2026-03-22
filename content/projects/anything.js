@@ -1,23 +1,23 @@
 // anything.js developed by Bob Tianqi Wei
 module.exports = {
-  slug: "signal-desk",
-  title: "Signal Desk",
-  meta: "AI product / editorial workspace",
+  slug: "systems-atlas",
+  title: "Systems Atlas",
+  meta: "Research platform / lab infrastructure",
   date: "2026",
   summary:
-    "A collaborative writing workspace that combines AI assistance, structured review, and publishing workflows in one interface.",
-  thumbnail: "assets/images/createanything.com.jpg",
-  thumbnailAlt: "Signal Desk",
+    "A lab-facing workspace for organizing experiments, datasets, implementation notes, and evaluation status in one readable interface.",
+  thumbnail: "assets/images/research-engineer-desk.jpg",
+  thumbnailAlt: "Systems Atlas",
   featured: true,
   selected: true,
   featuredOrder: 1,
   selectedOrder: 1,
   page: {
     headline:
-      "A publishing workspace shaped around structured collaboration, editorial clarity, and careful AI-assisted interaction.",
+      "A unified workspace for research groups that need to keep prototypes, experiments, and evidence connected.",
     focus:
-      "Product implementation, content workflows, and AI-assisted interface design",
-    stack: "React, TypeScript, design systems, workflow UI",
+      "Research infrastructure, developer tooling, and interface systems",
+    stack: "React, TypeScript, retrieval systems, data tooling",
     quickLinks: [
       { label: "Live demo", href: "https://example.com" }
     ],
@@ -25,20 +25,20 @@ module.exports = {
       {
         title: "Overview",
         paragraphs: [
-          "Signal Desk is a demo project for teams that need more than a landing page. It represents a working product surface with states, content hierarchy, and user tasks that have to stay understandable.",
-          "The important part is not only visual polish. It is how the interface reduces cognitive load while still exposing a powerful workflow."
+          "Systems Atlas is written like a realistic research engineering project. It combines experiment tracking, paper-oriented note taking, and implementation detail in one interface.",
+          "The main goal is clarity. Experiments, implementation notes, and open questions should sit side by side without forcing readers into a long formal report."
         ]
       },
       {
-        title: "Why It Matters",
+        title: "Why It Fits The Template",
         paragraphs: [
-          "This kind of case study is a good fit for Retroframe because it needs a compact but credible way to describe product thinking, engineering decisions, and interface detail.",
-          "The page layout stays old-school, but the editing model is modern and simple."
+          "This example shows how Retroframe can support a more realistic professor or research engineer site instead of only a startup product showcase.",
+          "The layout stays retro and opinionated, but the content model remains simple: one file, one thumbnail, and a few concise sections."
         ],
         image: {
-          src: "assets/images/createanything.com.jpg",
-          alt: "Signal Desk interface",
-          caption: "A homepage card can expand into a clean project case study page."
+          src: "assets/images/research-engineer-desk.jpg",
+          alt: "Systems Atlas interface inspiration",
+          caption: "Use one thumbnail and a few short sections to explain a system clearly."
         }
       }
     ]

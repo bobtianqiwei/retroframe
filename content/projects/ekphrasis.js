@@ -1,41 +1,44 @@
 // ekphrasis.js developed by Bob Tianqi Wei
 module.exports = {
-  slug: "studio-notes",
-  title: "Studio Notes",
-  meta: "Research prototype / learning system",
+  slug: "retrieval-memory-support",
+  title: "Retrieval as Memory Support in Lab Work",
+  meta: "Publication / CSCW journal article",
   date: "2025",
   summary:
-    "A visual learning tool that helps design students compare drafts, interpret feedback, and build stronger critique vocabulary.",
-  thumbnail: "assets/images/ekphrasis.jpg",
-  thumbnailAlt: "Studio Notes",
+    "A journal-style paper on how retrieval tools can help research teams revisit prior experiments, recover context, and reduce duplicated work.",
+  thumbnail: "assets/images/open-book.jpg",
+  thumbnailAlt: "Retrieval as Memory Support in Lab Work",
   featured: true,
   selected: true,
   featuredOrder: 2,
   selectedOrder: 2,
   page: {
     headline:
-      "A prototype for making design critique easier to understand, compare, and learn from over time.",
+      "A publication example focused on knowledge retrieval, research memory, and the everyday workflow of technical teams.",
     focus:
-      "Human-computer interaction, creative learning, and guided critique",
-    stack: "Prototype design, frontend systems, AI-assisted feedback",
+      "Information retrieval, knowledge work, and human-computer interaction",
+    stack: "Literature review, interviews, prototype evaluation",
+    quickLinks: [
+      { label: "Read abstract", href: "https://example.com/publication" }
+    ],
     sections: [
       {
         title: "Overview",
         paragraphs: [
-          "Studio Notes explores a familiar problem in design education: learners often receive feedback that is meaningful but hard to operationalize.",
-          "The project turns critique into something more comparative and concrete, so people can revise with better confidence."
+          "Research teams often forget why a past decision was made, which experiment already failed, or where a critical note lives. This paper studies that problem as a memory issue rather than a storage issue.",
+          "It combines interviews, prototype probes, and task analysis to show how retrieval systems can support continuity across long-running technical work."
         ]
       },
       {
-        title: "Interaction Logic",
+        title: "Template Fit",
         paragraphs: [
-          "The system does not frame AI as the critic. Instead, it acts as a mediation layer that organizes comparisons, highlights patterns, and supports reflection.",
-          "Retroframe works well for this kind of project because the page can carry both conceptual writing and lightweight visual proof."
+          "This example makes the template useful for faculty candidates, PhD students, research engineers, and applied scientists who need to present publications next to shipped systems.",
+          "The same content structure can hold a paper summary, one representative image, and a few external links without needing a separate publication engine."
         ],
         image: {
-          src: "assets/images/ekphrasis.jpg",
-          alt: "Studio Notes project image",
-          caption: "The template supports straightforward visual documentation blocks."
+          src: "assets/images/open-book.jpg",
+          alt: "Retrieval as Memory Support paper image",
+          caption: "A short paper entry can still feel substantial with a clear summary and one image."
         }
       }
     ]

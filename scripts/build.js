@@ -68,9 +68,7 @@ ${siteConfig.navLinks
 
 function renderTopbar() {
   return `    <div class="topbar">
-      <span class="topbar-item"><span id="sf-prefix">${escapeHtml(
-        siteConfig.topbar.prefix
-      )}</span><span id="sf-status">loading...</span></span>
+      <span class="topbar-item"><a class="topbar-link" href="https://github.com/bobtianqiwei/retroframe" target="_blank" rel="noreferrer">Retroframe</a><span class="topbar-text">is built in San Francisco:</span><img class="topbar-icon" id="sf-weather-icon" src="https://cdn.jsdelivr.net/gh/basmilius/weather-icons/production/fill/all/partly-cloudy-day.svg" alt=""><span id="sf-status">loading...</span></span>
     </div>`;
 }
 
@@ -81,10 +79,6 @@ function renderFooter(relativePath) {
     resolveHref(relativePath, siteConfig.site.footerLinkHref)
   )}" target="_blank" rel="noreferrer">${escapeHtml(
     siteConfig.site.footerLinkLabel
-  )}</a> · <a href="${escapeHtml(
-    resolveHref(relativePath, siteConfig.site.footerLinkHref)
-  )}" target="_blank" rel="noreferrer">${escapeHtml(
-    siteConfig.site.footerLinkHref
   )}</a></div>`;
 }
 
@@ -92,42 +86,8 @@ function renderParagraphs(paragraphs) {
   return paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("");
 }
 
-function renderIntroCode(lines) {
-  return lines
-    .map((line) => {
-      const escaped = escapeHtml(line);
-
-      if (line.startsWith("def ")) {
-        return escaped.replace(
-          /^def\b/,
-          '<span class="code-keyword">def</span>'
-        );
-      }
-
-      if (line.trim().startsWith("return ")) {
-        return escaped
-          .replace(/\breturn\b/, '<span class="code-return">return</span>')
-          .replace(/\btitle\b/g, '<span class="code-variable">title</span>')
-          .replace(/\bauthor\b/g, '<span class="code-variable">author</span>')
-          .replace(
-            /\bdescription\b/g,
-            '<span class="code-variable">description</span>'
-          );
-      }
-
-      return escaped
-        .replace(/\btitle\b/g, '<span class="code-variable">title</span>')
-        .replace(/\bauthor\b/g, '<span class="code-variable">author</span>')
-        .replace(
-          /\bdescription\b/g,
-          '<span class="code-variable">description</span>'
-        )
-        .replace(
-          /&quot;([^&]|&(?!quot;))*&quot;/g,
-          '<span class="code-string">$&</span>'
-        );
-    })
-    .join("\n");
+function renderIntroContent() {
+  return `<div class="intro-copy">${renderParagraphs(siteConfig.introParagraphs || [])}</div>`;
 }
 
 function renderFigure(relativePath, image) {
@@ -215,11 +175,11 @@ ${renderNav(relativePath)}
           <div class="box">
             <div class="box-title">Site Menu</div>
             <div class="box-body mini-nav">
-              <a href="#intro">Introduction</a>
+              <a href="#intro">About</a>
               <a href="#profile">Profile</a>
-              <a href="#trusted">Trusted By</a>
-              <a href="#essentials">Essentials</a>
-              <a href="#projects">Selected Projects</a>
+              <a href="#trusted">Affiliations</a>
+              <a href="#essentials">Highlights</a>
+              <a href="#projects">Projects and Publications</a>
             </div>
           </div>
           <div class="box" id="profile">
@@ -266,13 +226,13 @@ ${siteConfig.contact
         </td>
         <td class="main">
           <div class="box" id="intro">
-            <div class="box-title">Introduction</div>
+            <div class="box-title">About</div>
             <div class="box-body">
-<pre class="hero-code">${renderIntroCode(siteConfig.introCode)}</pre>
+${renderIntroContent()}
             </div>
           </div>
           <div class="box" id="trusted">
-            <div class="box-title">Trusted By</div>
+            <div class="box-title">Affiliations</div>
             <div class="box-body">
               <div class="trust-grid">
 ${siteConfig.trustedBy
@@ -288,7 +248,7 @@ ${siteConfig.trustedBy
             </div>
           </div>
           <div class="box" id="essentials">
-            <div class="box-title">Essentials</div>
+            <div class="box-title">Highlights</div>
             <div class="box-body">
               <table class="feature-table">
 ${featuredProjects
@@ -313,7 +273,7 @@ ${featuredProjects
             </div>
           </div>
           <div class="box" id="projects">
-            <div class="box-title">Selected Projects</div>
+            <div class="box-title">Projects and Publications</div>
             <div class="box-body">
               <table class="project-table">
 ${selectedProjects
@@ -377,7 +337,7 @@ ${anchorLinks
             </div>
           </div>
           <div class="box">
-            <div class="box-title">Project Info</div>
+            <div class="box-title">Work Info</div>
             <div class="box-body">
               <p><strong>Title:</strong> ${escapeHtml(project.title)}</p>
               <p><strong>Type:</strong> ${escapeHtml(project.meta)}</p>

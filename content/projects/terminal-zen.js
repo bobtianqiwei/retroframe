@@ -2,11 +2,11 @@
 module.exports = {
   slug: "quiet-shell",
   title: "Quiet Shell",
-  meta: "CLI tool / interaction design",
+  meta: "Research engineering / developer tool",
   date: "2026",
   summary:
-    "A terminal-based utility that turns command-line output into a lightweight breathing and focus ritual for people who work in the shell.",
-  thumbnail: "assets/images/terminal-zen-cover.png",
+    "A terminal tool that turns noisy command-line work into a calmer, more readable workflow for research and engineering tasks.",
+  thumbnail: "assets/images/retro-lab-desk.jpg",
   thumbnailAlt: "Quiet Shell",
   featured: false,
   selected: true,
@@ -24,18 +24,18 @@ module.exports = {
       {
         title: "Overview",
         paragraphs: [
-          "Quiet Shell begins with a simple observation: many developers spend hours in terminal windows that are optimized for output but not for care or pacing.",
-          "Instead of fighting that environment, the project works inside it. Progress bars become breathing cues, and ordinary command output becomes a quiet interaction ritual."
+          "Quiet Shell begins with a simple observation: engineers spend long hours in terminal windows that are efficient but often difficult to parse when tasks pile up.",
+          "Instead of replacing the terminal, the tool adds lightweight structure so long-running commands, logs, and checkpoints stay readable."
         ]
       },
       {
         title: "Why It Works In This Template",
         paragraphs: [
-          "This project demonstrates how Retroframe handles text-heavy storytelling without feeling flat. The side column helps orient the reader and the page frame gives the writing some structure.",
-          "It is a strong default for tools, research projects, and experiments that need more than one sentence but less than a full longform case study."
+          "This project demonstrates how Retroframe handles engineering tools that need more explanation than a single screenshot.",
+          "It is a strong default for developer tools, internal systems, and experiments that need concise but credible documentation."
         ],
         image: {
-          src: "assets/images/terminal-zen-cover.png",
+          src: "assets/images/retro-lab-desk.jpg",
           alt: "Quiet Shell screenshot",
           caption: "Retroframe works well for tools, prototypes, and research projects with a strong point of view."
         }

@@ -2,11 +2,11 @@
 module.exports = {
   slug: "field-resonance",
   title: "Field Resonance",
-  meta: "Interactive installation / sound experiment",
+  meta: "Research prototype / interactive system",
   date: "2025",
   summary:
-    "An interactive sound experiment that turns tactile material interaction into a responsive musical interface.",
-  thumbnail: "assets/images/water-synth.jpg",
+    "An interactive prototype that turns physical material input into a responsive sensing and visualization system.",
+  thumbnail: "assets/images/retro-lab-desk.jpg",
   thumbnailAlt: "Field Resonance",
   featured: false,
   selected: true,
@@ -21,35 +21,27 @@ module.exports = {
       {
         title: "Overview",
         paragraphs: [
-          "Field Resonance is included mainly to demonstrate the media system. Some projects need more than one image, and the template should support that without becoming difficult to maintain.",
-          "This page uses the built-in gallery slider so the repository can act as a real starting point instead of a static screenshot bundle."
+          "Field Resonance stays in the template as a research prototype example. It shows how to present experimental systems that combine hardware, sensing, and interface work.",
+          "This page uses the built-in gallery slider so the repository can still cover media-heavy work instead of only papers and software dashboards."
         ]
       },
       {
         title: "Gallery",
         paragraphs: [
-          "If a project has multiple key images, keep them in one section and let the slider handle the rest. That keeps the content files readable while still supporting richer project documentation."
+          "If a project has multiple images, keep them in one section and let the slider handle the rest. That keeps the content files readable while still supporting richer documentation."
         ],
         gallery: [
           {
-            src: "assets/images/IMG_1826.JPG",
+            src: "assets/images/retro-lab-desk.jpg",
             alt: "Field Resonance image 1"
           },
           {
-            src: "assets/images/water-synth.jpg",
+            src: "assets/images/research-engineer-desk.jpg",
             alt: "Field Resonance image 2"
           },
           {
-            src: "assets/images/IMG_6436.jpg",
+            src: "assets/images/open-book.jpg",
             alt: "Field Resonance image 3"
-          },
-          {
-            src: "assets/images/IMG_6359.jpg",
-            alt: "Field Resonance image 4"
-          },
-          {
-            src: "assets/images/257938840caba5cf8301f21f55847abd-2_1.jpg",
-            alt: "Field Resonance image 5"
           }
         ]
       }

@@ -2,11 +2,11 @@
 module.exports = {
   site: {
     title: "Retroframe",
-    metaTitle: "Retroframe | Classic Portfolio Template",
+    metaTitle: "Retroframe | Retro Portfolio Template for Researchers and Engineers",
     metaDescription:
-      "A classic portfolio template with a clean content system for software engineers, creative technologists, and digital makers.",
-    footerLabel: "This page uses the Retroframe template by",
-    footerLinkLabel: "github@bobtianqiwei",
+      "A retro portfolio template for researchers and engineers, with a simple file-based content system for projects, publications, and personal links.",
+    footerLabel: "Built from",
+    footerLinkLabel: "github.com/bobtianqiwei/retroframe",
     footerLinkHref: "https://github.com/bobtianqiwei/retroframe"
   },
   topbar: {
@@ -15,89 +15,91 @@ module.exports = {
   banner: {
     title: "Retroframe",
     subtitle:
-      "A classic portfolio template for software engineers, creative technologists, and product builders."
+      "A retro academic-style portfolio template for professors, research engineers, and technical builders."
   },
   navLinks: [
     { label: "Home", href: "index.html" },
     { label: "About", href: "index.html#profile" },
     { label: "Works", href: "index.html#projects" },
-    { label: "Resume", href: "https://example.com/resume" },
+    { label: "CV", href: "https://example.com/cv" },
+    { label: "Scholar", href: "https://scholar.google.com" },
     { label: "GitHub", href: "https://github.com/example" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/example/" }
+    { label: "Department", href: "https://example.edu/people/jianyu-chen" }
   ],
   newsItems: [
-    "Replace this ticker in content/site.js with your own updates, release notes, or availability status.",
-    "Retroframe keeps site-wide content in one file and project pages in one-folder-per-project data files.",
-    "This demo is intentionally generic so the repository can be published as a reusable template."
+    "Retroframe now demos a more realistic professor or research engineer profile with projects, publications, and academic links.",
+    "Use one file for site-wide profile content and one file per project or publication.",
+    "The demo includes placeholder company logos and free photos so you can swap in your own work quickly."
   ],
   profile: {
-    image: "assets/images/profile/demo-avatar.svg",
-    imageAlt: "Retroframe demo profile avatar",
-    name: "Alex Rowan",
+    image: "assets/images/profile/demo-avatar-unsplash.jpg",
+    imageAlt: "Demo portrait for the Retroframe professor and research engineer template",
+    name: "Dr. Jianyu Chen",
     focus:
-      "Frontend engineering, product design systems, creative tooling, and AI-assisted interfaces",
-    availability: "Available for selected freelance and product collaborations"
+      "Human-AI systems, machine learning evaluation, interactive systems, and research infrastructure",
+    availability: "Open to research collaborations, invited talks, and selective research engineering opportunities"
   },
   quickLinks: [
-    { label: "Resume PDF", href: "https://example.com/resume" },
+    { label: "CV PDF", href: "https://example.com/cv" },
+    { label: "Google Scholar", href: "https://scholar.google.com" },
+    { label: "Semantic Scholar", href: "https://www.semanticscholar.org" },
     { label: "GitHub Profile", href: "https://github.com/example" },
     {
-      label: "LinkedIn Profile",
-      href: "https://www.linkedin.com/in/example/"
+      label: "Department Page",
+      href: "https://example.edu/people/jianyu-chen"
     },
-    { label: "Email", href: "mailto:hello@example.com" }
+    { label: "Email", href: "mailto:jianyu.chen@example.edu" }
   ],
   contact: [
-    { label: "Email", value: "hello@example.com", href: "mailto:hello@example.com" },
-    { label: "Website", value: "example.com", href: "https://example.com" },
+    {
+      label: "Email",
+      value: "jianyu.chen@example.edu",
+      href: "mailto:jianyu.chen@example.edu"
+    },
+    { label: "Website", value: "jianyuchen.org", href: "https://jianyuchen.org" },
+    { label: "Scholar", value: "Google Scholar", href: "https://scholar.google.com" },
     { label: "GitHub", value: "/example", href: "https://github.com/example" },
     {
-      label: "LinkedIn",
-      value: "/in/example",
-      href: "https://www.linkedin.com/in/example/"
+      label: "Department",
+      value: "example.edu/people/jianyu-chen",
+      href: "https://example.edu/people/jianyu-chen"
     }
   ],
-  introCode: [
-    'def hero_section():',
-    '    title = "Building Useful Digital Products With Character"',
-    '    author = "Alex Rowan"',
-    '    description = """',
-    '    Frontend engineer focused on product UI, creative tooling, and calm AI-native workflows.',
-    '    I build web experiences that feel clear, reliable, and specific.',
-    '    The goal is simple: make useful software feel memorable.',
-    '    """',
-    '    return title, author, description'
+  introParagraphs: [
+    "Jianyu Chen is a computer scientist working across human-AI interaction, machine learning systems, and evaluation. His research studies how intelligent tools can support real research and engineering tasks without making those workflows harder to understand or trust.",
+    "He builds interactive systems, research prototypes, and infrastructure for experimentation. His recent work focuses on retrieval, evaluation, agent workflows, and interfaces that help people inspect model behavior in practical settings.",
+    "This template is written as a realistic example for faculty, applied scientists, research engineers, and PhD students who want one site for biography, projects, publications, and contact information."
   ],
   trustedBy: [
     {
-      name: "Northstar Lab",
-      href: "https://example.com",
-      image: "assets/images/logos/northstar-lab.svg"
+      name: "Apple",
+      href: "https://www.apple.com",
+      image: "assets/images/logos/apple.svg"
     },
     {
-      name: "Signal Foundry",
-      href: "https://example.com",
-      image: "assets/images/logos/signal-foundry.svg"
+      name: "NVIDIA",
+      href: "https://www.nvidia.com",
+      image: "assets/images/logos/nvidia.svg"
     },
     {
-      name: "Field Notes Studio",
-      href: "https://example.com",
-      image: "assets/images/logos/field-notes-studio.svg"
+      name: "Google",
+      href: "https://about.google",
+      image: "assets/images/logos/google.svg"
     },
     {
-      name: "Relay Systems",
-      href: "https://example.com",
-      image: "assets/images/logos/relay-systems.svg"
+      name: "Stripe",
+      href: "https://stripe.com",
+      image: "assets/images/logos/stripe.svg"
     },
     {
-      name: "June Office",
-      href: "https://example.com",
-      image: "assets/images/logos/june-office.svg"
+      name: "GitHub",
+      href: "https://github.com",
+      image: "assets/images/logos/github.svg"
     },
     {
-      name: "Paper Grid",
-      href: "https://example.com",
-      image: "assets/images/logos/paper-grid.svg"
+      name: "Meta",
+      href: "https://about.meta.com",
+      image: "assets/images/logos/meta.svg"
     }
   ]
 };

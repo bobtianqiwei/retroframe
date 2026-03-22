@@ -84,6 +84,7 @@ body[data-page="home"] .page {
   padding: 6px 10px;
   border-bottom: 1px solid rgba(194, 198, 202, 0.9);
   background: #f7f7f7;
+  text-align: right;
   color: #686d72;
   font-size: 10px;
 }
@@ -91,7 +92,26 @@ body[data-page="home"] .page {
 .topbar-item {
   display: inline-flex;
   align-items: center;
+  gap: 4px;
   white-space: nowrap;
+}
+
+.topbar-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  opacity: 0.9;
+}
+
+.topbar-link {
+  color: #5f656b;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.topbar-text {
+  color: #787d82;
 }
 
 #sf-prefix {
@@ -399,6 +419,8 @@ body[data-page="home"] .box-body a {
 .profile-photo {
   display: block;
   width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
   box-sizing: border-box;
   margin: 0 0 10px;
   border: 1px solid #a9bfdc;
@@ -413,34 +435,19 @@ body[data-page="home"] a {
   color: #5f6f7e;
 }
 
-.hero-code {
-  margin: 0;
-  padding: 0;
-  white-space: pre-wrap;
-  border: 0;
-  background: #fff;
-  box-shadow: none;
-  font: 12px/1.7 "Lucida Console", "Courier New", Courier, monospace;
-  font-weight: 600;
-  color: #4a3624;
+.intro-copy,
+.intro-copy p {
+  color: #464b50;
+  font-size: 12px;
+  line-height: 1.7;
 }
 
-.hero-code .code-keyword {
-  color: #8a3f1d;
-  font-weight: bold;
+.intro-copy p:first-child {
+  margin-top: 0;
 }
 
-.hero-code .code-variable {
-  color: #6b5416;
-}
-
-.hero-code .code-string {
-  color: #5f6f2e;
-}
-
-.hero-code .code-return {
-  color: #9b2f2f;
-  font-weight: bold;
+.intro-copy p:last-child {
+  margin-bottom: 0;
 }
 
 .trust-grid {
@@ -522,10 +529,14 @@ body[data-page="home"] a {
 
 body[data-page="project"] .project-gallery-image {
   background: #eef3f8;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
 }
 
 .thumb img {
   width: 160px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
 }
 
 .thumb a::after,
