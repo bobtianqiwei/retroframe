@@ -57,15 +57,17 @@ npm run build
 
 This template builds to plain static files, so it can be hosted on GitHub Pages without a server.
 
-1. Create a GitHub repository and push this project to it.
-2. Run `npm install` and `npm run build`.
-3. Commit the generated `index.html`, `projects/`, and `assets/` output.
-4. On GitHub, open `Settings` -> `Pages`.
-5. Choose your publishing source:
+1. Fork this repository into your own GitHub account.
+2. Rename the forked repository to `<username>.github.io`.
+3. Run `npm install` and `npm run build`.
+4. Commit the generated `index.html`, `projects/`, `publications/`, `about/`, and `assets/` output.
+5. Push the changes to your fork.
+6. On GitHub, open `Settings` -> `Pages`.
+7. Choose your publishing source:
    Use `Deploy from a branch` if you want to publish the built files directly from `main` or `gh-pages`.
    Use a custom GitHub Actions workflow if you want GitHub to run the build for you.
-6. If you publish from a branch and do not want Jekyll processing, add an empty `.nojekyll` file in the publishing root.
-7. Wait for the Pages deployment to finish, then open the provided `github.io` URL.
+8. If you publish from a branch and do not want Jekyll processing, add an empty `.nojekyll` file in the publishing root.
+9. Wait for the Pages deployment to finish, then open your `https://<username>.github.io` site.
 
 Notes:
 
