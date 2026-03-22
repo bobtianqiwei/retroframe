@@ -1,0 +1,7 @@
+<!-- signal-foundry.svg developed by Bob Tianqi Wei -->
+<svg width="180" height="40" viewBox="0 0 180 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="10" y="9" width="8" height="22" fill="#355782"/>
+  <rect x="22" y="13" width="8" height="18" fill="#5A7188"/>
+  <rect x="34" y="5" width="8" height="26" fill="#8AA4C4"/>
+  <text x="54" y="23" fill="#355782" font-family="Verdana, Arial, sans-serif" font-size="16">Signal Foundry</text>
+</svg>

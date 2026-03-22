@@ -1,0 +1,6 @@
+<!-- field-notes-studio.svg developed by Bob Tianqi Wei -->
+<svg width="180" height="40" viewBox="0 0 180 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="10" y="8" width="24" height="24" rx="2" fill="#D8E5F6" stroke="#355782" stroke-width="2"/>
+  <path d="M18 15H26M18 20H26M18 25H23" stroke="#355782" stroke-width="2"/>
+  <text x="46" y="23" fill="#355782" font-family="Verdana, Arial, sans-serif" font-size="14">Field Notes Studio</text>
+</svg>

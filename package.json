@@ -1,0 +1,8 @@
+{
+  "name": "retroframe",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.js",
+    "preview": "python3 -m http.server 8888"
+  }
+}

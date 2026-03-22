@@ -1,0 +1,6 @@
+<!-- paper-grid.svg developed by Bob Tianqi Wei -->
+<svg width="180" height="40" viewBox="0 0 180 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M10 10H32V30H10V10Z" stroke="#355782" stroke-width="2"/>
+  <path d="M17.333 10V30M24.666 10V30M10 16.666H32M10 23.333H32" stroke="#8AA4C4" stroke-width="1.5"/>
+  <text x="44" y="23" fill="#355782" font-family="Verdana, Arial, sans-serif" font-size="16">Paper Grid</text>
+</svg>

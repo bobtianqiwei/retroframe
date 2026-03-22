@@ -1,0 +1,8 @@
+<!-- relay-systems.svg developed by Bob Tianqi Wei -->
+<svg width="180" height="40" viewBox="0 0 180 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="20" cy="20" r="11" stroke="#355782" stroke-width="2"/>
+  <circle cx="20" cy="20" r="3" fill="#355782"/>
+  <path d="M20 9C26.0751 9 31 13.9249 31 20" stroke="#8AA4C4" stroke-width="2"/>
+  <path d="M20 31C13.9249 31 9 26.0751 9 20" stroke="#5A7188" stroke-width="2"/>
+  <text x="46" y="23" fill="#355782" font-family="Verdana, Arial, sans-serif" font-size="16">Relay Systems</text>
+</svg>

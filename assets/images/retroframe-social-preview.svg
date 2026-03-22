@@ -1,0 +1,33 @@
+<!-- retroframe-social-preview.svg developed by Bob Tianqi Wei -->
+<svg width="1280" height="640" viewBox="0 0 1280 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="640" fill="#D8E5F6"/>
+  <rect x="92" y="74" width="1096" height="492" rx="4" fill="url(#paint0_linear)" stroke="#6B8CBB" stroke-width="2"/>
+  <rect x="92" y="74" width="1096" height="34" fill="#F7F7F7"/>
+  <circle cx="118" cy="91" r="6" fill="#8AA4C4"/>
+  <circle cx="138" cy="91" r="6" fill="#A9BFDC"/>
+  <circle cx="158" cy="91" r="6" fill="#D8E5F6"/>
+  <rect x="92" y="108" width="1096" height="88" fill="url(#paint1_linear)"/>
+  <text x="138" y="162" fill="white" font-family="Tahoma, Verdana, Arial, sans-serif" font-size="46">Retroframe</text>
+  <text x="138" y="214" fill="#264B7D" font-family="Verdana, Arial, sans-serif" font-size="22">Classic portfolio template with a clean content system</text>
+  <rect x="122" y="250" width="252" height="248" fill="#EDF4FB" stroke="#A9BFDC" stroke-width="2"/>
+  <rect x="404" y="250" width="660" height="78" fill="white" stroke="#A9BFDC" stroke-width="2"/>
+  <rect x="404" y="350" width="660" height="78" fill="white" stroke="#A9BFDC" stroke-width="2"/>
+  <rect x="404" y="450" width="660" height="78" fill="white" stroke="#A9BFDC" stroke-width="2"/>
+  <text x="148" y="292" fill="#133A73" font-family="Verdana, Arial, sans-serif" font-size="20">Sidebar Profile</text>
+  <text x="432" y="296" fill="#133A73" font-family="Verdana, Arial, sans-serif" font-size="20">Featured Projects</text>
+  <text x="432" y="396" fill="#133A73" font-family="Verdana, Arial, sans-serif" font-size="20">Project Pages</text>
+  <text x="432" y="496" fill="#133A73" font-family="Verdana, Arial, sans-serif" font-size="20">Simple File Content System</text>
+  <text x="138" y="546" fill="#355782" font-family="Verdana, Arial, sans-serif" font-size="24">retro interface, static output, reusable demo data</text>
+  <defs>
+    <linearGradient id="paint0_linear" x1="640" y1="74" x2="640" y2="566" gradientUnits="userSpaceOnUse">
+      <stop stop-color="white" stop-opacity="0.78"/>
+      <stop offset="1" stop-color="#E7EFFA" stop-opacity="0.78"/>
+    </linearGradient>
+    <linearGradient id="paint1_linear" x1="640" y1="108" x2="640" y2="196" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7EB1ED"/>
+      <stop offset="0.46" stop-color="#4C7BC0"/>
+      <stop offset="0.75" stop-color="#2B579F"/>
+      <stop offset="1" stop-color="#244B8E"/>
+    </linearGradient>
+  </defs>
+</svg>
