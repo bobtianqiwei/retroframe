@@ -5,8 +5,9 @@ module.exports = {
     metaTitle: "Retroframe | Classic Portfolio Template",
     metaDescription:
       "A classic portfolio template with a clean content system for software engineers, creative technologists, and digital makers.",
-    footer:
-      "Retroframe · Classic portfolio template · MIT License"
+    footerLabel: "This page uses the Retroframe template by",
+    footerLinkLabel: "github@bobtianqiwei",
+    footerLinkHref: "https://github.com/bobtianqiwei/retroframe"
   },
   topbar: {
     prefix: "Template demo time:"

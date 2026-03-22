@@ -74,8 +74,18 @@ function renderTopbar() {
     </div>`;
 }
 
-function renderFooter() {
-  return `    <div class="footer">${escapeHtml(siteConfig.site.footer)}</div>`;
+function renderFooter(relativePath) {
+  return `    <div class="footer">${escapeHtml(
+    siteConfig.site.footerLabel
+  )} <a href="${escapeHtml(
+    resolveHref(relativePath, siteConfig.site.footerLinkHref)
+  )}" target="_blank" rel="noreferrer">${escapeHtml(
+    siteConfig.site.footerLinkLabel
+  )}</a> · <a href="${escapeHtml(
+    resolveHref(relativePath, siteConfig.site.footerLinkHref)
+  )}" target="_blank" rel="noreferrer">${escapeHtml(
+    siteConfig.site.footerLinkHref
+  )}</a></div>`;
 }
 
 function renderParagraphs(paragraphs) {
@@ -187,7 +197,7 @@ function renderHome(relativePath, projects) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="${escapeHtml(resolveAsset(relativePath, "assets/css/retroframe.css"))}" rel="stylesheet" type="text/css">
 </head>
-<body>
+<body data-page="home">
   <div class="page">
 ${renderTopbar()}
     <div class="banner">
@@ -321,7 +331,7 @@ ${selectedProjects
         </td>
       </tr>
     </table>
-${renderFooter()}
+${renderFooter(relativePath)}
   </div>
   <script>window.retroframeNewsItems = ${JSON.stringify(siteConfig.newsItems)};</script>
   <script src="${escapeHtml(resolveAsset(relativePath, "assets/js/status-bar.js"))}" defer></script>
@@ -350,13 +360,9 @@ function renderProjectPage(project) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="${escapeHtml(resolveAsset(relativePath, "assets/css/retroframe.css"))}" rel="stylesheet" type="text/css">
 </head>
-<body>
+<body data-page="project" data-theme="slate-ice">
   <div class="page">
 ${renderTopbar()}
-    <div class="banner">
-      <h1>${escapeHtml(siteConfig.banner.title)}</h1>
-      <p>${escapeHtml(siteConfig.banner.subtitle)}</p>
-    </div>
 ${renderNav(relativePath)}
     <table class="content">
       <tr>
@@ -431,7 +437,7 @@ ${project.page.sections
         </td>
       </tr>
     </table>
-${renderFooter()}
+${renderFooter(relativePath)}
   </div>
   <script src="${escapeHtml(resolveAsset(relativePath, "assets/js/status-bar.js"))}" defer></script>
   <script src="${escapeHtml(resolveAsset(relativePath, "assets/js/project-page.js"))}" defer></script>
