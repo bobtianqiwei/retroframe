@@ -2,6 +2,7 @@
 module.exports = {
   slug: "new-project",
   title: "New Project",
+  type: "project",
   meta: "Product category / project type",
   date: "2026",
   summary:
@@ -12,11 +13,21 @@ module.exports = {
   selected: true,
   featuredOrder: 99,
   selectedOrder: 99,
+  publication: {
+    venue: "",
+    year: "",
+    authors: "",
+    doi: "",
+    citation: "",
+    abstract: ""
+  },
   page: {
     headline:
       "A one-sentence project headline for the detail page header.",
     focus: "Main focus area, domain, or discipline",
     stack: "Main tools, technologies, or methods",
+    role: "Your role on the project or paper",
+    collaborators: "Collaborators, lab, or coauthors",
     quickLinks: [
       { label: "Live demo", href: "https://example.com" }
     ],

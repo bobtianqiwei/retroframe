@@ -106,7 +106,6 @@ body[data-page="home"] .page {
 
 .topbar-link {
   color: #5f656b;
-  font-weight: 600;
   text-decoration: underline;
 }
 
@@ -582,6 +581,13 @@ body[data-page="project"] .project-gallery-image {
   text-transform: uppercase;
 }
 
+.project-submeta {
+  margin: 0 0 4px;
+  color: #6d737a;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
 .project-header {
   margin: 10px 10px 0;
   padding: 16px 18px 14px;
@@ -624,6 +630,17 @@ body[data-page="project"] .project-gallery-image {
 }
 
 .project-richtext p:last-child {
+  margin-bottom: 0;
+}
+
+.publication-meta p {
+  margin: 0 0 8px;
+  color: #464b50;
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.publication-meta p:last-child {
   margin-bottom: 0;
 }
 

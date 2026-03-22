@@ -19,8 +19,9 @@ module.exports = {
   },
   navLinks: [
     { label: "Home", href: "index.html" },
-    { label: "About", href: "index.html#profile" },
-    { label: "Works", href: "index.html#projects" },
+    { label: "About", href: "about/index.html" },
+    { label: "Publications", href: "publications/index.html" },
+    { label: "Projects", href: "projects/index.html" },
     { label: "CV", href: "https://example.com/cv" },
     { label: "Scholar", href: "https://scholar.google.com" },
     { label: "GitHub", href: "https://github.com/example" },
@@ -35,6 +36,9 @@ module.exports = {
     image: "assets/images/profile/demo-avatar-unsplash.jpg",
     imageAlt: "Demo portrait for the Retroframe professor and research engineer template",
     name: "Dr. Jianyu Chen",
+    title: "Assistant Professor of Computer Science",
+    affiliation: "Example University",
+    location: "San Francisco Bay Area",
     focus:
       "Human-AI systems, machine learning evaluation, interactive systems, and research infrastructure",
     availability: "Open to research collaborations, invited talks, and selective research engineering opportunities"
@@ -70,6 +74,33 @@ module.exports = {
     "He builds interactive systems, research prototypes, and infrastructure for experimentation. His recent work focuses on retrieval, evaluation, agent workflows, and interfaces that help people inspect model behavior in practical settings.",
     "This template is written as a realistic example for faculty, applied scientists, research engineers, and PhD students who want one site for biography, projects, publications, and contact information."
   ],
+  aboutPage: {
+    headline:
+      "A longer biography page for researchers, professors, and research engineers who need more than a short homepage introduction.",
+    sections: [
+      {
+        title: "Biography",
+        paragraphs: [
+          "Jianyu Chen is an assistant professor of computer science whose work sits at the intersection of human-AI interaction, research infrastructure, and machine learning evaluation.",
+          "His research asks how intelligent systems can support real scientific and engineering work without making those workflows harder to inspect, trust, or revise."
+        ]
+      },
+      {
+        title: "Research Focus",
+        paragraphs: [
+          "His recent work focuses on evaluation methods for interactive AI systems, retrieval and memory support for research teams, and interfaces for inspecting agent behavior in practical settings.",
+          "Across these projects, the larger goal is to build systems that are technically capable while still remaining legible to the people who depend on them."
+        ]
+      },
+      {
+        title: "Collaboration",
+        paragraphs: [
+          "He works with students, engineers, and researchers on projects involving agentic systems, human-AI workflows, and infrastructure for experimentation.",
+          "This page is included in Retroframe because a strong research portfolio often needs a dedicated About page in addition to a concise homepage summary."
+        ]
+      }
+    ]
+  },
   trustedBy: [
     {
       name: "Apple",

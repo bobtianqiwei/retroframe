@@ -86,8 +86,35 @@ function renderParagraphs(paragraphs) {
   return paragraphs.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("");
 }
 
+function renderList(items, className) {
+  if (!Array.isArray(items) || !items.length) {
+    return "";
+  }
+
+  return `<ul class="${escapeHtml(className)}">
+${items.map((item) => `  <li>${escapeHtml(item)}</li>`).join("\n")}
+</ul>`;
+}
+
 function renderIntroContent() {
   return `<div class="intro-copy">${renderParagraphs(siteConfig.introParagraphs || [])}</div>`;
+}
+
+function renderPublicationMeta(project) {
+  if (project.type !== "publication" || !project.publication) {
+    return "";
+  }
+
+  const publication = project.publication;
+
+  return `<div class="publication-meta">
+  ${publication.authors ? `<p><strong>Authors:</strong> ${escapeHtml(publication.authors)}</p>` : ""}
+  ${publication.venue ? `<p><strong>Venue:</strong> ${escapeHtml(publication.venue)}</p>` : ""}
+  ${publication.year ? `<p><strong>Year:</strong> ${escapeHtml(publication.year)}</p>` : ""}
+  ${publication.doi ? `<p><strong>DOI:</strong> <a href="https://doi.org/${escapeHtml(publication.doi)}" target="_blank" rel="noreferrer">${escapeHtml(publication.doi)}</a></p>` : ""}
+  ${publication.citation ? `<p><strong>Citation:</strong> ${escapeHtml(publication.citation)}</p>` : ""}
+  ${publication.abstract ? `<p><strong>Abstract:</strong> ${escapeHtml(publication.abstract)}</p>` : ""}
+</div>`;
 }
 
 function renderFigure(relativePath, image) {
@@ -139,13 +166,59 @@ ${items
 </div>`;
 }
 
+function renderCollectionRows(relativePath, items, showThumbnails) {
+  return items
+    .map((project) => {
+      if (showThumbnails) {
+        return `                <tr>
+                  <td class="thumb"><a href="${escapeHtml(
+                    resolveHref(relativePath, `projects/${project.slug}/index.html`)
+                  )}"><img src="${escapeHtml(resolveAsset(relativePath, project.thumbnail))}" alt="${escapeHtml(
+          project.thumbnailAlt
+        )}"></a></td>
+                  <td>
+                    <p class="project-title"><a href="${escapeHtml(
+                      resolveHref(relativePath, `projects/${project.slug}/index.html`)
+                    )}">${escapeHtml(project.title)}</a></p>
+                    <p class="project-meta">${escapeHtml(project.meta)}</p>
+                    <p>${escapeHtml(project.summary)}</p>
+                  </td>
+                </tr>`;
+      }
+
+      return `                <tr>
+                  <td><p class="project-title"><a href="${escapeHtml(
+                    resolveHref(relativePath, `projects/${project.slug}/index.html`)
+                  )}">${escapeHtml(project.title)}</a></p><p class="project-meta">${escapeHtml(project.meta)}</p>${
+                    project.publication
+                      ? `<p class="project-submeta">${escapeHtml(
+                          [project.publication.authors, project.publication.venue]
+                            .filter(Boolean)
+                            .join(" | ")
+                        )}</p>`
+                      : ""
+                  }<p>${escapeHtml(project.summary)}</p></td>
+                </tr>`;
+    })
+    .join("\n");
+}
+
 function renderHome(relativePath, projects) {
   const featuredProjects = projects
-    .filter((project) => project.featured)
+    .filter((project) => project.featured && project.type !== "publication")
+    .sort((a, b) => a.featuredOrder - b.featuredOrder);
+  const featuredPublications = projects
+    .filter((project) => project.featured && project.type === "publication")
     .sort((a, b) => a.featuredOrder - b.featuredOrder);
   const selectedProjects = projects
-    .filter((project) => project.selected)
+    .filter((project) => project.selected && project.type !== "publication")
     .sort((a, b) => a.selectedOrder - b.selectedOrder);
+  const selectedPublications = projects
+    .filter((project) => project.selected && project.type === "publication")
+    .sort((a, b) => a.selectedOrder - b.selectedOrder);
+  const moreWorkItems = selectedPublications
+    .slice(featuredPublications.length)
+    .concat(selectedProjects.slice(featuredProjects.length));
 
   return `<!-- index.html developed by Bob Tianqi Wei -->
 <!DOCTYPE html>
@@ -172,16 +245,6 @@ ${renderNav(relativePath)}
     <table class="content">
       <tr>
         <td class="sidebar">
-          <div class="box">
-            <div class="box-title">Site Menu</div>
-            <div class="box-body mini-nav">
-              <a href="#intro">About</a>
-              <a href="#profile">Profile</a>
-              <a href="#trusted">Affiliations</a>
-              <a href="#essentials">Highlights</a>
-              <a href="#projects">Projects and Publications</a>
-            </div>
-          </div>
           <div class="box" id="profile">
             <div class="box-title">Profile</div>
             <div class="box-body">
@@ -189,6 +252,9 @@ ${renderNav(relativePath)}
                 resolveAsset(relativePath, siteConfig.profile.image)
               )}" alt="${escapeHtml(siteConfig.profile.imageAlt)}">
               <p><strong>Name:</strong> ${escapeHtml(siteConfig.profile.name)}</p>
+              <p><strong>Title:</strong> ${escapeHtml(siteConfig.profile.title || "")}</p>
+              <p><strong>Affiliation:</strong> ${escapeHtml(siteConfig.profile.affiliation || "")}</p>
+              <p><strong>Location:</strong> ${escapeHtml(siteConfig.profile.location || "")}</p>
               <p><strong>Focus:</strong> ${escapeHtml(siteConfig.profile.focus)}</p>
               <p><strong>Availability:</strong> ${escapeHtml(siteConfig.profile.availability)}</p>
             </div>
@@ -225,7 +291,7 @@ ${siteConfig.contact
           </div>
         </td>
         <td class="main">
-          <div class="box" id="intro">
+          <div class="box" id="about">
             <div class="box-title">About</div>
             <div class="box-body">
 ${renderIntroContent()}
@@ -247,8 +313,32 @@ ${siteConfig.trustedBy
               </div>
             </div>
           </div>
-          <div class="box" id="essentials">
-            <div class="box-title">Highlights</div>
+          <div class="box" id="publications">
+            <div class="box-title">Selected Publications</div>
+            <div class="box-body">
+              <table class="project-table">
+${featuredPublications
+  .map(
+    (project) => `                <tr>
+                  <td><p class="project-title"><a href="${escapeHtml(
+                    resolveHref(relativePath, `projects/${project.slug}/index.html`)
+                  )}">${escapeHtml(project.title)}</a></p><p class="project-meta">${escapeHtml(project.meta)}</p>${
+                    project.publication
+                      ? `<p class="project-submeta">${escapeHtml(
+                          [project.publication.authors, project.publication.venue]
+                            .filter(Boolean)
+                            .join(" | ")
+                        )}</p>`
+                      : ""
+                  }<p>${escapeHtml(project.summary)}</p></td>
+                </tr>`
+  )
+  .join("\n")}
+              </table>
+            </div>
+          </div>
+          <div class="box" id="projects">
+            <div class="box-title">Selected Projects</div>
             <div class="box-body">
               <table class="feature-table">
 ${featuredProjects
@@ -272,16 +362,24 @@ ${featuredProjects
               </table>
             </div>
           </div>
-          <div class="box" id="projects">
-            <div class="box-title">Projects and Publications</div>
+          <div class="box">
+            <div class="box-title">More Work</div>
             <div class="box-body">
               <table class="project-table">
-${selectedProjects
+${moreWorkItems
   .map(
     (project) => `                <tr>
                   <td><p class="project-title"><a href="${escapeHtml(
                     resolveHref(relativePath, `projects/${project.slug}/index.html`)
-                  )}">${escapeHtml(project.title)}</a></p><p>${escapeHtml(project.summary)}</p></td>
+                  )}">${escapeHtml(project.title)}</a></p><p class="project-meta">${escapeHtml(project.meta)}</p>${
+                    project.publication
+                      ? `<p class="project-submeta">${escapeHtml(
+                          [project.publication.authors, project.publication.venue]
+                            .filter(Boolean)
+                            .join(" | ")
+                        )}</p>`
+                      : ""
+                  }<p>${escapeHtml(project.summary)}</p></td>
                 </tr>`
   )
   .join("\n")}
@@ -296,6 +394,179 @@ ${renderFooter(relativePath)}
   <script>window.retroframeNewsItems = ${JSON.stringify(siteConfig.newsItems)};</script>
   <script src="${escapeHtml(resolveAsset(relativePath, "assets/js/status-bar.js"))}" defer></script>
   <script src="${escapeHtml(resolveAsset(relativePath, "assets/js/home.js"))}" defer></script>
+</body>
+</html>
+`;
+}
+
+function renderCollectionPage(relativePath, options) {
+  const { title, description, items, kind } = options;
+  const isPublicationPage = kind === "publications";
+  const tableClass = isPublicationPage ? "project-table" : "feature-table";
+
+  return `<!-- index.html developed by Bob Tianqi Wei -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>${escapeHtml(title)} | Retroframe</title>
+  <meta name="description" content="${escapeHtml(description)}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="${escapeHtml(resolveAsset(relativePath, "assets/css/retroframe.css"))}" rel="stylesheet" type="text/css">
+</head>
+<body data-page="project" data-theme="slate-ice">
+  <div class="page">
+${renderTopbar()}
+${renderNav(relativePath)}
+    <table class="content">
+      <tr>
+        <td class="sidebar">
+          <div class="box">
+            <div class="box-title">Browse</div>
+            <div class="box-body mini-nav">
+              <a href="${escapeHtml(resolveHref(relativePath, "index.html#about"))}">About</a>
+              <a href="${escapeHtml(resolveHref(relativePath, "about/index.html"))}">About Page</a>
+              <a href="${escapeHtml(resolveHref(relativePath, "publications/index.html"))}">Publications</a>
+              <a href="${escapeHtml(resolveHref(relativePath, "projects/index.html"))}">Projects</a>
+              <a href="${escapeHtml(resolveHref(relativePath, "index.html#profile"))}">Contact</a>
+            </div>
+          </div>
+          <div class="box">
+            <div class="box-title">Profile</div>
+            <div class="box-body">
+              <p><strong>Name:</strong> ${escapeHtml(siteConfig.profile.name)}</p>
+              <p><strong>Title:</strong> ${escapeHtml(siteConfig.profile.title || "")}</p>
+              <p><strong>Affiliation:</strong> ${escapeHtml(siteConfig.profile.affiliation || "")}</p>
+              <p><strong>Focus:</strong> ${escapeHtml(siteConfig.profile.focus)}</p>
+            </div>
+          </div>
+          <div class="box">
+            <div class="box-title">Quick Links</div>
+            <div class="box-body">
+              <ul class="plain-list">
+                <li><a href="${escapeHtml(resolveHref(relativePath, "index.html"))}">Back to Home</a></li>
+${siteConfig.quickLinks
+  .map(
+    (item) =>
+      `                <li><a href="${escapeHtml(resolveHref(relativePath, item.href))}"${
+        /^https?:/.test(item.href) ? ' target="_blank" rel="noreferrer"' : ""
+      }>${escapeHtml(item.label)}</a></li>`
+  )
+  .join("\n")}
+              </ul>
+            </div>
+          </div>
+        </td>
+        <td class="main">
+          <div class="project-header">
+            <h1 class="project-header-title">${escapeHtml(title)}</h1>
+            <p class="project-header-headline">${escapeHtml(description)}</p>
+          </div>
+          <div class="box">
+            <div class="box-title">${escapeHtml(title)}</div>
+            <div class="box-body">
+              <table class="${tableClass}">
+${renderCollectionRows(relativePath, items, !isPublicationPage)}
+              </table>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+${renderFooter(relativePath)}
+  </div>
+  <script src="${escapeHtml(resolveAsset(relativePath, "assets/js/status-bar.js"))}" defer></script>
+</body>
+</html>
+`;
+}
+
+function renderAboutPage(relativePath) {
+  const aboutConfig = siteConfig.aboutPage || { headline: "", sections: [] };
+  const anchorLinks = (aboutConfig.sections || []).map((section, index) => ({
+    id: section.id || `section-${index + 1}`,
+    title: section.title
+  }));
+
+  return `<!-- index.html developed by Bob Tianqi Wei -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>About | Retroframe</title>
+  <meta name="description" content="${escapeHtml(siteConfig.site.metaDescription)}">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="${escapeHtml(resolveAsset(relativePath, "assets/css/retroframe.css"))}" rel="stylesheet" type="text/css">
+</head>
+<body data-page="project" data-theme="slate-ice">
+  <div class="page">
+${renderTopbar()}
+${renderNav(relativePath)}
+    <table class="content">
+      <tr>
+        <td class="sidebar">
+          <div class="box">
+            <div class="box-title">Browse</div>
+            <div class="box-body mini-nav">
+              <a href="${escapeHtml(resolveHref(relativePath, "index.html"))}">Home</a>
+${anchorLinks
+  .map((item) => `              <a href="#${escapeHtml(item.id)}">${escapeHtml(item.title)}</a>`)
+  .join("\n")}
+              <a href="${escapeHtml(resolveHref(relativePath, "publications/index.html"))}">Publications</a>
+              <a href="${escapeHtml(resolveHref(relativePath, "projects/index.html"))}">Projects</a>
+            </div>
+          </div>
+          <div class="box">
+            <div class="box-title">Profile</div>
+            <div class="box-body">
+              <img class="profile-photo" src="${escapeHtml(
+                resolveAsset(relativePath, siteConfig.profile.image)
+              )}" alt="${escapeHtml(siteConfig.profile.imageAlt)}">
+              <p><strong>Name:</strong> ${escapeHtml(siteConfig.profile.name)}</p>
+              <p><strong>Title:</strong> ${escapeHtml(siteConfig.profile.title || "")}</p>
+              <p><strong>Affiliation:</strong> ${escapeHtml(siteConfig.profile.affiliation || "")}</p>
+              <p><strong>Location:</strong> ${escapeHtml(siteConfig.profile.location || "")}</p>
+            </div>
+          </div>
+          <div class="box">
+            <div class="box-title">Quick Links</div>
+            <div class="box-body">
+              <ul class="plain-list">
+                <li><a href="${escapeHtml(resolveHref(relativePath, "index.html"))}">Back to Home</a></li>
+${siteConfig.quickLinks
+  .map(
+    (item) =>
+      `                <li><a href="${escapeHtml(resolveHref(relativePath, item.href))}"${
+        /^https?:/.test(item.href) ? ' target="_blank" rel="noreferrer"' : ""
+      }>${escapeHtml(item.label)}</a></li>`
+  )
+  .join("\n")}
+              </ul>
+            </div>
+          </div>
+        </td>
+        <td class="main">
+          <div class="project-header">
+            <h1 class="project-header-title">About</h1>
+            <p class="project-header-headline">${escapeHtml(aboutConfig.headline || "")}</p>
+          </div>
+${(aboutConfig.sections || [])
+  .map((section, index) => {
+    const sectionId = section.id || `section-${index + 1}`;
+    return `          <div class="box" id="${escapeHtml(sectionId)}">
+            <div class="box-title">${escapeHtml(section.title)}</div>
+            <div class="box-body">
+              <div class="project-richtext">${renderParagraphs(section.paragraphs || [])}</div>
+            </div>
+          </div>`;
+  })
+  .join("\n")}
+        </td>
+      </tr>
+    </table>
+${renderFooter(relativePath)}
+  </div>
+  <script src="${escapeHtml(resolveAsset(relativePath, "assets/js/status-bar.js"))}" defer></script>
 </body>
 </html>
 `;
@@ -340,8 +611,19 @@ ${anchorLinks
             <div class="box-title">Work Info</div>
             <div class="box-body">
               <p><strong>Title:</strong> ${escapeHtml(project.title)}</p>
+              <p><strong>Category:</strong> ${escapeHtml(project.type || "project")}</p>
               <p><strong>Type:</strong> ${escapeHtml(project.meta)}</p>
               <p><strong>Focus:</strong> ${escapeHtml(project.page.focus)}</p>
+              ${
+                project.page.role
+                  ? `<p><strong>Role:</strong> ${escapeHtml(project.page.role)}</p>`
+                  : ""
+              }
+              ${
+                project.page.collaborators
+                  ? `<p><strong>Collaborators:</strong> ${escapeHtml(project.page.collaborators)}</p>`
+                  : ""
+              }
             </div>
           </div>
           <div class="box">
@@ -352,6 +634,16 @@ ${anchorLinks
               <p>${escapeHtml(project.date)}</p>
             </div>
           </div>
+          ${
+            project.type === "publication"
+              ? `          <div class="box">
+            <div class="box-title">Publication Details</div>
+            <div class="box-body">
+${renderPublicationMeta(project)}
+            </div>
+          </div>`
+              : ""
+          }
           <div class="box">
             <div class="box-title">Quick Links</div>
             <div class="box-body">
@@ -409,8 +701,31 @@ ${renderFooter(relativePath)}
 
 function main() {
   const projects = loadProjects();
+  const publications = projects.filter((project) => project.type === "publication");
+  const projectItems = projects.filter((project) => project.type !== "publication");
   fs.rmSync(path.join(repoRoot, "projects"), { recursive: true, force: true });
   writeFile("index.html", renderHome("index.html", projects));
+  writeFile("about/index.html", renderAboutPage("about/index.html"));
+  writeFile(
+    "publications/index.html",
+    renderCollectionPage("publications/index.html", {
+      title: "Publications",
+      description:
+        "A complete list of publications in the Retroframe template, presented in the same retro academic style.",
+      items: publications,
+      kind: "publications"
+    })
+  );
+  writeFile(
+    "projects/index.html",
+    renderCollectionPage("projects/index.html", {
+      title: "Projects",
+      description:
+        "A complete list of projects in the Retroframe template, including systems work, developer tools, and research prototypes.",
+      items: projectItems,
+      kind: "projects"
+    })
+  );
 
   projects.forEach((project) => {
     const page = renderProjectPage(project);
