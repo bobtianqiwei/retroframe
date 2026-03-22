@@ -7,6 +7,9 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 12px 0 24px;
   box-sizing: border-box;
   background: #d8e5f6;
@@ -32,9 +35,10 @@ img {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  flex: 1 0 auto;
   width: 960px;
-  margin: 0 auto;
-  min-height: 100%;
+  margin: 0;
+  min-height: 0;
   border: 1px solid rgba(107, 140, 187, 0.95);
   background: linear-gradient(rgba(255, 255, 255, 0.78), rgba(231, 239, 250, 0.78));
   box-shadow:
